@@ -1,0 +1,11 @@
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/bin/Debug/netcoreapp2.2/c-sharpGameOfLife.deps.json
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/bin/Debug/netcoreapp2.2/c-sharpGameOfLife.runtimeconfig.json
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/bin/Debug/netcoreapp2.2/c-sharpGameOfLife.runtimeconfig.dev.json
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/bin/Debug/netcoreapp2.2/c-sharpGameOfLife.dll
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/bin/Debug/netcoreapp2.2/c-sharpGameOfLife.pdb
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.csprojAssemblyReference.cache
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.csproj.CoreCompileInputs.cache
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.AssemblyInfoInputs.cache
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.AssemblyInfo.cs
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.dll
+/Users/thor/RiderProjects/c-sharpGameOfLife/c-sharpGameOfLife/obj/Debug/netcoreapp2.2/c-sharpGameOfLife.pdb

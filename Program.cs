@@ -1,73 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace c_sharpGameOfLife
 {
     class Program
     {
-        
-        static int ComputeNeighbours(int x, int y, int width, int height, string[] lines)
-        {
-            var arr = new[]
-            {
-                (-1, -1), (0, -1), (1, -1),
-                (-1, 0),           (1,  0),
-                (-1, 1),  (0,  1), (1,  1)
-            };
-
-            return arr.Select(t =>
-            {
-                var (dx, dy) = t;
-                int nx = x + dx, ny = y + dy;
-                if (nx >= 0 && nx < width && ny >= 0 && ny < height &&
-                    lines[ny][nx] == '1')
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }).Sum();
-        }
-
-        static char Life(int x, int y, char c, int width, int height, string[] lines)
-        {
-            switch ((c, ComputeNeighbours(x, y, width, height, lines)))
-            {
-                case var tuple when tuple == ('1', 2):
-                    return c;
-                case var tuple when tuple.Item2 == (2):
-                    return '1';
-                default:
-                    return '0';
-            }
-        }
-        
         static string IterateGrid(string grid)
         {
             var lines = grid.Split(new []{'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
             var width = lines.FirstOrDefault().Length;
             var height = lines.Count();
 
-            
-
-            var newLines = new string[height];
-
-            for (var y = 0; y < lines.Length; y++)
+            int ComputeNeighbours(int x, int y)
             {
-                var line = lines[y];
-                var chars = line.ToCharArray();
-                var values = new char[chars.Length];
-                for (var x = 0; x < chars.Length; x++)
+                var arr = new[]
                 {
-                    values[x] = Life(x, y, chars[x], width, height, lines);
-                }
+                    (-1, -1), (0, -1), (1, -1),
+                    (-1, 0),           (1,  0),
+                    (-1, 1),  (0,  1), (1,  1)
+                };
 
-                newLines[y] = new string(chars);
+                return arr.Select(t =>
+                {
+                    var (dx, dy) = t;
+                    int nx = x + dx, ny = y + dy;
+                    if (nx >= 0 && nx < width && ny >= 0 && ny < height &&
+                        lines[ny][nx] == '1')
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }).Sum();
             }
 
+            char Life(int x, int y, char c)
+            {
+                switch ((c, ComputeNeighbours(x, y)))
+                {
+                    case var tuple when tuple == ('1', 2):
+                        return c;
+                    case var tuple when tuple.Item2 == (3):
+                        return '1';
+                    default:
+                        return '0';
+                }
+            }
+
+            var newLines = lines.Select((line, y) =>
+            {
+                var chars = line.ToCharArray();
+                var values = chars.Select((c, x) => Life(x, y, c)).ToArray();
+                return new string(values);
+            });
+            
             return string.Join("\r\n", newLines);
         }
 
@@ -93,11 +83,13 @@ namespace c_sharpGameOfLife
 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-00000000000000000000000000000000000000000000000000000000000000000000000000000000");
+00000000000000000000000000000000000000000000000000000000000000000000000000000000
+");
 
-            for (var i = 0; i < 200; i++)
+            for (var i = 0; i <= 200; i++)
             {
                 Console.Clear();
+                Console.WriteLine();
                 grid = IterateGrid(grid);
                 Console.WriteLine(grid);
             }
